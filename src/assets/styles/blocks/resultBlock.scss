@@ -1,0 +1,56 @@
+.form {
+
+    &__control {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(284px, 1fr));
+        grid-column-gap: 30px;
+        row-gap: 35px;
+        align-items: center;
+
+        @media (max-width: $DesktopWidth) {
+            column-gap: 61px;
+        }
+
+        @media (max-width: $TabWidth) {
+            row-gap: 35px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        @media (max-width: $SmallWidth) {
+            gap: 24px;
+        }
+    }
+
+    &__result {
+
+        justify-content: space-between;
+    }
+
+    &__sum {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        min-width: 284px;
+
+        @media (max-width: $DesktopWidth) {
+            min-width: 291px;
+        }
+
+        @media (max-width: $SmallWidth) {
+            gap: 4px;
+        }
+    }
+
+    &__sum-value {
+        font-size: $TitleFontSize;
+        color: $TitleTextColor;
+        white-space: nowrap;
+
+        @media (max-width: $SmallWidth) {
+            font-size: $SmInputFontSize;
+        }
+    }
+}

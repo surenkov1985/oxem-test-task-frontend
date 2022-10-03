@@ -1,0 +1,46 @@
+.form {
+    &__submit {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: $DefaultFont;
+        font-size: $InputFontSize;
+        color: $ButtonTextColor;
+        background: $ButtonColor;
+        border-radius: 40px;
+        padding: 15px 52px;
+        min-width: 284px;
+        max-height: 68px;
+        cursor: pointer;
+        white-space: nowrap;
+        transition: all .03s;
+
+        &:hover {
+            background: $TitleTextColor;
+        }
+
+        &:active {
+            background: $HintTextColor;
+        }
+
+        &:disabled {
+            background: $ButtonColor;
+            opacity: 0.4;
+            cursor: default;
+        }
+
+        @media (max-width: 1024px) {
+            max-width: 345px;
+        }
+
+        @media (max-width: 500px) {
+            font-size: $SmInputFontSize;
+            padding: 18px 52px;
+            margin-top: 2px;
+        }
+    }
+
+    &__submit-loading {
+        display: flex;
+    }
+}

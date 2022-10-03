@@ -1,0 +1,64 @@
+.form {
+
+    &__range-input {
+        width: 100%;
+        -webkit-appearance: none;
+        height: 2px;
+        position: absolute;
+        top: calc(100% - 1px);
+        left: 0;
+        cursor: pointer;
+        transition: all 0.3s;
+
+        &::-webkit-slider-thumb {
+            height: 2px;
+            -webkit-appearance: none;
+            background-color: $ButtonColor;
+            width: 20px;
+            box-sizing: content-box;
+            border-radius: 50%;
+            height: 20px;
+        }
+
+        &:disabled {
+            cursor: default;
+
+            &::-moz-range-thumb {
+                background-color: $ButtonColor;
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                border: none;
+            }
+
+            &::-webkit-slider-thumb {
+                height: 2px;
+                -webkit-appearance: none;
+                background-color: $ButtonColor;
+                width: 20px;
+                box-sizing: content-box;
+                border-radius: 50%;
+                height: 20px;
+            }
+        }
+
+        &::-moz-range-thumb {
+            background-color: $ButtonColor;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: none;
+        }
+
+        &::-webkit-progress-value {
+            -webkit-appearance: none;
+            height: 1px;
+            background: $ButtonColor;
+        }
+
+        &::-moz-range-progress {
+            height: 2px;
+            background: $ButtonColor;
+        }
+    }
+}

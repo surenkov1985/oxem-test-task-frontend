@@ -1,5 +1,5 @@
 const path = require("path");
-const fs = require('fs');
+const fs = require("fs");
 const ES6Promise = require("es6-promise");
 ES6Promise.polyfill();
 
@@ -17,27 +17,25 @@ const build = {
 
 	plugins: [
 		new MiniCssExtractPlugin({
-			filename: "assets/styles/[name].[contenthash].css"
+			filename: "assets/styles/[name].[contenthash].css",
 		}),
 		new HtmlWebpackPlugin({
-		template: "index.html",
-	}),
+			template: "index.html",
+		}),
 		new CopyPlugin({
-			patterns: [
-				{from: "static", to: "", noErrorOnMissing: true},
-
-			]}),
+			patterns: [{ from: "static", to: "", noErrorOnMissing: true }],
+		}),
 	],
 	performance: {
 		hints: false,
 		maxEntrypointSize: 512000,
-		maxAssetSize: 512000
+		maxAssetSize: 512000,
 	},
 	entry: ["@babel/polyfill", "./index.js"],
 	resolve: {
 		alias: {
-			"": path.resolve(__dirname, "src/")
-		}
+			"": path.resolve(__dirname, "src/"),
+		},
 	},
 	optimization: {
 		splitChunks: {
@@ -48,42 +46,52 @@ const build = {
 			new OptimizeCssPlugin(),
 			new TerserWebpackPlugin({
 				extractComments: false,
-			})
-		]
+			}),
+		],
 	},
 	output: {
 		path: path.resolve(__dirname, "dist"),
 		filename: "assets/js/[name].[contenthash].js",
-		clean: true
+		clean: true,
 	},
 	module: {
 		rules: [
 			{
 				test: /\.html$/i,
-				use: ["html-loader"]
+				use: ["html-loader"],
 			},
 			{
 				test: /\.(sa|sc|c)ss$/,
 				use: [
 					MiniCssExtractPlugin.loader,
-					"css-loader",
-					"postcss-loader",
+					{
+						loader: "css-loader",
+						options: { importLoaders: 1 },
+					},
+					{
+						loader: "postcss-loader",
+						options: {
+							postcssOptions: {
+								plugins: [["autoprefixer"]],
+							},
+						},
+					},
 					"sass-loader",
 				],
 			},
 			{
-				test:/\.(jpg|png|svg|jpeg|gif)$/i,
+				test: /\.(jpg|png|svg|jpeg|gif)$/i,
 				type: "asset/resource",
 				generator: {
-					filename: "assets/img/[name][ext]"
-				}
+					filename: "assets/img/[name][ext]",
+				},
 			},
 			{
-				test:/\.(woff|woff2|eot|ttf|otf)$/i,
+				test: /\.(woff|woff2|eot|ttf|otf)$/i,
 				type: "asset/resource",
 				generator: {
-					filename: "assets/fonts/[name][ext]"
-				}
+					filename: "assets/fonts/[name][ext]",
+				},
 			},
 			{
 				test: /\.js$/,
@@ -92,12 +100,11 @@ const build = {
 					loader: "babel-loader",
 					options: {
 						cacheDirectory: true,
-					}
-
+					},
 				},
-			}
-		]
-	}
+			},
+		],
+	},
 };
 
 const dev = {
@@ -109,19 +116,17 @@ const dev = {
 		},
 		open: true,
 		port: 8081,
-		host: "local-ip",
+		host: "localhost",
 		compress: true,
 		hot: true,
 		liveReload: true,
 		client: {
 			overlay: {
 				warnings: true,
-				errors: true
-			}
-		}
+				errors: true,
+			},
+		},
 	},
 };
 
-module.exports = Object.assign(build, mode === "development" ? dev : {})
-
-
+module.exports = Object.assign(build, mode === "development" ? dev : {});

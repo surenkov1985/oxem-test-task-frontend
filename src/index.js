@@ -6,5 +6,11 @@ import { App } from "./assets/components/App";
 
 const container = document.getElementById("root");
 const root = createRoot(container);
+import {store} from "./assets/redux/store"
+import { Provider } from "react-redux";
 
-root.render(<App />);
+root.render(
+    <Provider store={store}>
+        <App />
+    </Provider>
+);

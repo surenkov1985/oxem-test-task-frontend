@@ -1,0 +1,172 @@
+.form {
+
+    &__range {
+        width: 428px;
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+
+        @media (max-width: $DesktopWidth) {
+            width: 100%;
+        }
+
+        @media (max-width: $SmallWidth) {
+            gap: 10px;
+        }
+    }
+
+    &__range-title {
+        font-size: $HintFontSize;
+        font-family: $HintFont;
+        color: $HintTextColor;
+
+        @media (max-width: $SmallWidth) {
+            font-size: $SmHintFontSize;
+        }
+    }
+
+    &__input-container {
+        width: 100%;
+        padding: 15px 24px 0;
+        background: $InputColor;
+        border-radius: 16px;
+        max-width: 427px;
+
+        &:hover {
+            & .form__range-input::-webkit-slider-thumb {
+                height: 2px;
+                -webkit-appearance: none;
+                background-color: $ButtonColor;
+                width: 24px;
+                box-sizing: content-box;
+                border-radius: 50%;
+                height: 24px;
+            }
+
+            & .form__range-input::-moz-range-thumb {
+                width: 24px;
+                height: 24px;
+            }
+
+            & .form__range-input::-moz-range-progress {
+                height: 1px;
+            }
+        }
+
+        &[data-active="active"] {
+            outline: 2px solid $InputColor;
+            background: $ButtonTextColor;
+
+            & .form__unit {
+                background: $InputColor;
+            }
+        }
+
+        &[data-disabled="disabled"] {
+            opacity: 0.4;
+
+            &:hover {
+                & .form__range-input::-webkit-slider-thumb {
+                    width: 20px;
+                    height: 20px;
+                }
+
+                & .form__range-input::-moz-range-thumb {
+                    width: 20px;
+                    height: 20px;
+                }
+            }
+        }
+
+        @media (max-width: $DesktopWidth) {
+            max-width: 100%;
+        }
+
+        @media (max-width: $SmallWidth) {
+            padding: 17px 20px 0;
+        }
+    }
+
+    &__range-cont {
+        padding-bottom: 15px;
+        position: relative;
+
+        @media (max-width: $SmallWidth) {
+            padding-bottom: 17px;
+        }
+    }
+
+    &__range-label {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        font-size: $InputFontSize;
+        color: $HintTextColor;
+        font-family: $DefaultFont;
+
+        @media (max-width: $SmallWidth) {
+            font-size: $SmInputFontSize;
+        }
+    }
+
+    &__input {
+        width: 100%;
+        background: none;
+        font-size: $InputFontSize;
+        color: $HintTextColor;
+        font-family: $DefaultFont;
+
+        &:focus {
+            background: $ButtonTextColor;
+        }
+
+        @media (max-width: $SmallWidth) {
+            font-size: $SmInputFontSize;
+        }
+    }
+
+    &__unit-perc {
+        font-size: $UnitFontSize;
+        padding: 15px;
+        border-radius: 16px;
+        background: $UnitColor;
+        position: absolute;
+        right: -16px;
+
+        @media (max-width: $SmallWidth) {
+            padding: 13px;
+            font-size: $SmInputFontSize;
+            right: -12px;
+        }
+    }
+
+    &__unit-val {
+        font-size: $InputFontSize;
+        padding: 15px;
+        border-radius: 16px;
+        position: absolute;
+        right: -16px;
+
+        @media (max-width: $SmallWidth) {
+            padding: 13px;
+            font-size: $SmInputFontSize;
+            right: -12px;
+        }
+    }
+
+    &__unit-month {
+        font-size: $InputFontSize;
+        padding: 15px;
+        border-radius: 16px;
+        position: absolute;
+        right: -16px;
+
+        @media (max-width: $SmallWidth) {
+            padding: 13px;
+            font-size: $SmInputFontSize;
+            right: -12px;
+        }
+    }
+}

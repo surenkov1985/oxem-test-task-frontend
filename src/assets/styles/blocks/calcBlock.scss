@@ -1,0 +1,31 @@
+.calc {
+    width: 100%;
+    max-width: $DesktopWidth;
+    padding: 50px 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    position: relative;
+
+    @media (max-width: $SmallDesktopWidth) {
+        padding: 100px 48px 120px;
+        gap: 42px;
+    }
+
+    @media (max-width: $SmallWidth) {
+        padding: 44px 20px 64px;
+        gap: 32px;
+    }
+
+    &__title {
+        color: $TitleTextColor;
+        font-size: $TitleFontSize;
+        line-height: 90%;
+        max-width: 753px;
+
+        @media (max-width: $SmallWidth) {
+            font-size: $SmTitlefontSize;
+            width: 79%;
+        }
+    }
+}
